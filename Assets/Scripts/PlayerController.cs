@@ -8,11 +8,17 @@ public class PlayerController : MonoBehaviour
     BoxCollider boxCollider;
 
     bool isGrounded;
+    private bool isFacingLeft;
+    private bool isShooting;
+
     [SerializeField] LayerMask groundLayer; //mihin kerrokseen maa kuuluu
+    [SerializeField] private float shootDelay = 0.1f;
 
     public float fallMultiplier = 2.5f;
     public float speed = 10f;
     public float jumpVelocity = 10f;
+    public Transform firePoint;
+    public GameObject fireballPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,7 +29,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         float extraHeight = 0.1f;
 
@@ -47,6 +53,7 @@ public class PlayerController : MonoBehaviour
                 animator.Play("Player_run");
             }
             spriteRenderer.flipX = false; //käännetään pelaaja
+            isFacingLeft = false;
         }
 
         else if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -58,6 +65,7 @@ public class PlayerController : MonoBehaviour
                 animator.Play("Player_run");
             }
             spriteRenderer.flipX = true; //käännetään pelaaja
+            isFacingLeft = true;
         }
 
         else
@@ -79,7 +87,33 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
+        PlayerManager manager = GetComponent<PlayerManager>();
+        if (manager)
+        {
+            if (manager.inventory.Contains("Fireball"))
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    if (isShooting)
+                    {
+                        return;
+                    }
+                    isShooting = true;
 
+                    GameObject b = Instantiate(fireballPrefab);
+                    
+                    b.GetComponent<FireballBullet>().StartShoot(isFacingLeft);
+
+                    b.transform.position = firePoint.transform.position;
+                    Invoke("ResetShoot", shootDelay);
+                }
+            }
+        }
+
+    }
+    void ResetShoot()
+    {
+        isShooting = false;
     }
 
 }
