@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "koodikoulu unity projekti.sln"
+    "dotnet.defaultSolution": "koodikoulupeli.sln"
 }

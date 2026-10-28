@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float jumpVelocity = 10f;
     public Transform firePoint;
     public GameObject fireballPrefab;
+    private GameMaster gm;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider>();
+        gm = GameObject.FindGameObjectWithTag("Gm").GetComponent<GameMaster>();
+        transform.position = gm.checkPointPos;
     }
 
     // Update is called once per frame
@@ -114,6 +118,22 @@ public class PlayerController : MonoBehaviour
     void ResetShoot()
     {
         isShooting = false;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 
 }

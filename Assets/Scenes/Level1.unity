@@ -821,6 +821,51 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &519955227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519955229}
+  - component: {fileID: 519955228}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Gm
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &519955228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519955227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e6b2c928b830f4b87dd7223ffa0e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPointPos: {x: -3, y: -1.5, z: 0}
+--- !u!4 &519955229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519955227}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1810821, y: -9.38105, z: 17.140951}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &730972233
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +876,7 @@ GameObject:
   m_Component:
   - component: {fileID: 730972234}
   - component: {fileID: 730972235}
+  - component: {fileID: 730972236}
   m_Layer: 0
   m_Name: Checkpoint2
   m_TagString: Checkpoint
@@ -874,6 +920,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &730972236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730972233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e861ec4448cf9a44a2d4f3fbf00c3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &809819177 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4252315293928615060, guid: b0d76d23f0d77314c81b12cd77a6f077, type: 3}
@@ -1156,7 +1214,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &998134377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,6 +1437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1129186585}
   - component: {fileID: 1129186586}
+  - component: {fileID: 1129186587}
   m_Layer: 0
   m_Name: Checkpoint1
   m_TagString: Checkpoint
@@ -1422,6 +1481,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1129186587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129186584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e861ec4448cf9a44a2d4f3fbf00c3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1238374686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1904,7 +1975,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2044965872}
+  m_Mesh: {fileID: 1109709591}
 --- !u!33 &1525328954
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -2579,7 +2650,7 @@ GameObject:
   - component: {fileID: 1735926738}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2692,7 +2763,7 @@ GameObject:
   - component: {fileID: 1783487793}
   m_Layer: 0
   m_Name: SpaceOcto
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2805,7 +2876,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3492,3 +3563,4 @@ SceneRoots:
   - {fileID: 37852045}
   - {fileID: 1783487792}
   - {fileID: 1027908177}
+  - {fileID: 519955229}
