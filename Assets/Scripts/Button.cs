@@ -21,4 +21,9 @@ public class Button : MonoBehaviour
         animator.Play("Button_Up");
         isOpen = false;
     }
+    public void OnRespawn()
+    {
+        animator.Play("Button_Up");
+        isOpen = false;
+    }
 }
